@@ -3,13 +3,17 @@ class TasksController < ApplicationController
     @tasks = Task.all
   end
 
+  def new
+    @task = Task.new
+  end
+
   def create
-    @task = Task.new(task_create_params)
-    if @task.save
-      redirect_to tasks_path
-    else
-      flash[:error] = "Task creation failed! #{print_errors(@task)}"
-      redirect_to tasks_path
+    task = Task.new(task_create_params)
+
+    task.save!
+
+    if task.save
+      render json: task
     end
   end
 

@@ -14,6 +14,20 @@ function createTask() {
        });
 };
 
+function destroyTask(event) {
+  var taskId = $(this).parent().attr('id');
+  var task = $(this).parent();
+
+  $.ajax({
+      method: "DELETE",
+      url: "/tasks/" + taskId,
+      data: { id: taskId },
+      success: function(event) {
+        $(task).parent().remove();
+      }
+    });
+};
+
 function highlightTasksDueToday() {
   var todaysTasks = getTodaysTasks();
   setBackgroundColor(todaysTasks);
@@ -58,6 +72,8 @@ $(document).ready(function() {
   });
 
   $("#highlight-due-today").click(highlightTasksDueToday);
+
+  $('.delete-task').click(destroyTask);
 
 });
 

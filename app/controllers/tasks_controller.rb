@@ -13,7 +13,7 @@ class TasksController < ApplicationController
     task.save!
 
     if task.save
-      render json: task
+      render partial: "tasks/show", locals: {task: task}, layout: false
     end
   end
 

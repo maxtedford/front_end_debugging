@@ -31,3 +31,15 @@
         }
     }
 }
+
+#highlight-due-today {
+    margin: 10px auto;
+}
+
+span.due-date {
+    float: right;
+}
+
+span.due-date:before {
+    content: 'Due: ';
+}

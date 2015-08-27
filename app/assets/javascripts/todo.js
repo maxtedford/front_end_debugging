@@ -1,5 +1,5 @@
 function getTaskData() {
-  { name: $("#name").val(); }
+  return { name: $("#name").val() }
 };
 
 function createTask() {
@@ -12,7 +12,9 @@ function createTask() {
        });
 };
 
-$("#submit-task").submit(function(event) {
-  event.preventDefault();
-  createTask();
+$('document').ready(function() {
+  $("#submit-task").submit(function(event) {
+    event.preventDefault();
+    createTask();
+  });
 });

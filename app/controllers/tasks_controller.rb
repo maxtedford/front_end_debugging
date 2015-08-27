@@ -29,12 +29,14 @@ class TasksController < ApplicationController
 
   def destroy
     @task = Task.find(params[:id])
-    if @task.delete
-      redirect_to tasks_path
-    else
-      flash[:error] = "Task deletion failed! #{print_errors(@task)}"
-      redirect_to tasks_path
-    end
+    @task.destroy!
+    render json: {status: :success}
+    # if @task.delete
+    #   redirect_to tasks_path
+    # else
+    #   flash[:error] = "Task deletion failed! #{print_errors(@task)}"
+    #   redirect_to tasks_path
+    # end
   end
 
   def task_create_params

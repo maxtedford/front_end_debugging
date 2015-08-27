@@ -11,10 +11,6 @@
       method: 'patch',
       :class => 'btn btn-sm btn-success')  %>
 <% end %>
-  <%= link_to("Delete",
-      task_path(id: task.id),
-      method: "delete",
-      class: "btn btn-sm btn-warning",
-      data: { confirm: "Are you sure?" }) %>
+  <a class="delete-task btn btn-sm btn-warning">Delete</a>
   <%= task.name %> <span class="due-date"><%= task.due_date %></span>
 </li>

@@ -14,6 +14,19 @@ function createTask() {
        });
 };
 
+function destroyTask(event) {
+  var taskId = $(this).parent().attr('id');
+
+  $.ajax({
+      method: "DELETE",
+      url: "/tasks/" + taskId,
+      data: { id: taskId },
+      success: function(event) {
+        $(this).parent().remove();
+      }
+    });
+};
+
 function highlightTasksDueToday() {
   var todaysTasks = getTodaysTasks();
   setBackgroundColor(todaysTasks);
@@ -60,6 +73,8 @@ $(document).ready(function() {
   });
 
   $("#highlight-due-today").click(highlightTasksDueToday);
+
+  $('.destroy-task').click(destroyTask);
 
 });
 

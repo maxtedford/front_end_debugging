@@ -46,15 +46,13 @@ function getTodaysTasks() {
     }
   }
 
-  if (tasksDueToday.length > 0) {
-    return tasksDueToday;
-  }
+  return tasksDueToday;
 };
 
 function getTodaysDate() {
   var todaysDate = new Date(); // gets today's date
   var year = todaysDate.getFullYear(); // returns the 4-digit year (2015)
-  var month = todaysDate.getMonth(); // returns the month number (i.e. August = 7)
+  var month = "0" + (todaysDate.getMonth() + 1); // returns the month number (i.e. August = 7)
   var date = todaysDate.getDate(); // returns the date number (i.e. 1-31)
 
   var formattedDate = year + '-' + month + '-' + date;
